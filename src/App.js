@@ -7,14 +7,6 @@ function App() {
       <header className="App-header">
         <h1 className="title">Memory Game</h1>
         <h3 className="subtitle">Match Cards to win</h3>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
