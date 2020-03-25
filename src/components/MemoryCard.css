@@ -43,10 +43,10 @@ img {
 .MemoryCardFront {
     font-size: 30px;
     line-height: 20px;
-    transform: rotateY(180deg);
+    transform: rotateY(180);
 }
 
 .MemoryCardInner,
 .flipped {
-    transform: rotateY(180deg);
+    transform: rotateY(180);
 }
