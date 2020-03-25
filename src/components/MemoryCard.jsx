@@ -8,12 +8,9 @@ class MemoryCard extends Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  clickHandler() {
-    let { isFlipped } = this.state.isFlipped;
-    isFlipped === false
-      ? this.setState({ isFlipped: true })
-      : (isFlipped = false);
-  }
+  clickHandler = () => {
+    this.setState({ isFlipped: !this.state.isFlipped });
+  };
 
   render() {
     let memoryCardInnerClass = "MemoryCardInner";
