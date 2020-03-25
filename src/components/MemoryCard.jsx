@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import "./MemoryCard.css";
 
 class MemoryCard extends Component {
+  clickHandler() {
+    alert("card click");
+  }
+
   render() {
     return (
-      <div className="MemoryCard">
+      <div className="MemoryCard" onClick={this.clickHandler}>
         <div className="MemomryCardInner">
           <div className="MemoryCardBack">
             <img
