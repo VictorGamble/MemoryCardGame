@@ -5,11 +5,11 @@ class MemoryCard extends Component {
   constructor(props) {
     super(props);
     this.state = { isFlipped: false };
-    this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler = () => {
-    this.setState({ isFlipped: !this.state.isFlipped });
+    this.setState({ isFlipped: true });
+    alert(this.state.isFlipped);
   };
 
   render() {
