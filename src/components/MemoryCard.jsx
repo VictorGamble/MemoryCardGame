@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import "./MemoryCard.css";
 
 class MemoryCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isFlipped: false };
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
   clickHandler() {
-    alert("card click");
+    this.state.isFlipped === false
+      ? this.setState({ isFlipped: true })
+      : this.setState({ isFlipped: false });
+    alert(this.state);
   }
 
   render() {
