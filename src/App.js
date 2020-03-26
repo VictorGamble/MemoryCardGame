@@ -5,15 +5,15 @@ import './App.css';
 const generateDeck = () => {
   const symbols = [`∆`, ` ß`, `£`, `§`, `•`, `$`, `+`, `ø`]
   const deck = []
-
-  symbols.map(symbol => {
-   return deck.push({
-      symbol: symbol,
-      isFlipped: false
-    })
-  })
- return shuffle(deck)
-}
+ 
+  for (let i = 0; i < 16; i++ ) {
+    deck.push({
+        isFlipped: false,
+        symbol: symbols[i%8]
+    });
+};
+   return deck
+ }
 
 
 
@@ -25,19 +25,19 @@ const shuffle = (array) => {
   return array;
 }
 
-console.log(generateDeck())
+console.log("shuffled deck =>",shuffle(generateDeck()))
 
 class App extends Component{
   state = {
-    deck: generateDeck(),
+    deck: shuffle(generateDeck()),
     pickedCards: []
   }
  
   render() {
     const cardJSX = this.state.deck.map((card, index) => {
-      return card.symbol
+      return <MemoryCard symbol = {card.symbol} isFlipped = {card.isFlipped} key = {index} />
   })
-  console.log(cardJSX)
+  console.log("cardJsx is =>", cardJSX)
     return (
       <div className="App">
         <header className="App-header">
@@ -54,7 +54,7 @@ class App extends Component{
         {cardJSX.slice(8,12)}
         </div>
         <div className='row'>
-        <MemoryCard/>
+        {cardJSX.slice(12,16)}
         </div>
       </div>
     );
