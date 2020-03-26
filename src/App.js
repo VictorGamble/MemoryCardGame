@@ -7,7 +7,7 @@ const generateDeck = () => {
   const deck = []
 
   symbols.map(symbol => {
-    deck.push({
+   return deck.push({
       symbol: symbol,
       isFlipped: false
     })
@@ -24,14 +24,15 @@ const shuffle = (array) => {
 
 class App extends Component{
   state = {
-    deck: [],
+    deck: generateDeck(),
     pickedCards: []
   }
-  clickHandler = () => {
-    this.setState({ isFlipped: true });
-  };
+ 
   render() {
-  
+    const cardsJsx = this.state.deck.map((card, index) => {
+      return <MemoryCard/>
+    })
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -39,28 +40,16 @@ class App extends Component{
           <h3 className="subtitle">Match Cards to win</h3>
         </header>
         <div className='row'>
-          < MemoryCard />
-          <MemoryCard />
-          < MemoryCard />
-          <MemoryCard />
+          {cardsJsx.slice(0,4)}
         </div>
         <div className='row'>
-          < MemoryCard />
-          < MemoryCard />
-          <MemoryCard />
-          <MemoryCard />
+        {cardsJsx.slice(4,8)}
         </div>
         <div className='row'>
-          < MemoryCard />
-          < MemoryCard />
-          <MemoryCard />
-          <MemoryCard />
+        {cardsJsx.slice(8,12)}
         </div>
         <div className='row'>
-          < MemoryCard />
-          < MemoryCard />
-          <MemoryCard />
-          <MemoryCard />
+        {cardsJsx.slice(12,16)}
         </div>
       </div>
     );
