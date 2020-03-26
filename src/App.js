@@ -12,15 +12,20 @@ const generateDeck = () => {
       isFlipped: false
     })
   })
-  return shuffle(deck)
+ return shuffle(deck)
 }
+
 
 
 const shuffle = (array) => {
-  const newArray = array.concat();
-  newArray.sort(() => 0.5 - Math.random());
-  return newArray;
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
+
+console.log(generateDeck())
 
 class App extends Component{
   state = {
@@ -29,10 +34,10 @@ class App extends Component{
   }
  
   render() {
-    const cardsJsx = this.state.deck.map((card, index) => {
-      return <MemoryCard/>
-    })
-    
+    const cardJSX = this.state.deck.map((card, index) => {
+      return card.symbol
+  })
+  console.log(cardJSX)
     return (
       <div className="App">
         <header className="App-header">
@@ -40,16 +45,16 @@ class App extends Component{
           <h3 className="subtitle">Match Cards to win</h3>
         </header>
         <div className='row'>
-          {cardsJsx.slice(0,4)}
+          {cardJSX.slice(0,4)}
         </div>
         <div className='row'>
-        {cardsJsx.slice(4,8)}
+        {cardJSX.slice(4,8)}
         </div>
         <div className='row'>
-        {cardsJsx.slice(8,12)}
+        {cardJSX.slice(8,12)}
         </div>
         <div className='row'>
-        {cardsJsx.slice(12,16)}
+        <MemoryCard/>
         </div>
       </div>
     );
